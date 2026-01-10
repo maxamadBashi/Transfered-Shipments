@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-container,
+  .print-container * {
+    visibility: visible;
+  }
+
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+
+  @page {
+    margin: 0;
+  }
+}
+
+/* Custom styles for shipment forms */
+.shipment-document {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.pixel-border {
+  border: 1px solid black;
+}
+
+.border-b-dotted {
+  border-bottom: 1px dotted black;
+}
