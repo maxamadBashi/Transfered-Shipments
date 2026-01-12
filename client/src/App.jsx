@@ -5,6 +5,7 @@ import PrintLayout from './components/PrintLayout';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
+
 function App() {
   const [currentShipment, setCurrentShipment] = useState(null);
   const [isPrinting, setIsPrinting] = useState(false);
@@ -23,7 +24,7 @@ function App() {
         setIsPrinting(false);
       }, 500);
     } catch (error) {
-      console.error('Error saving shipment:', error);
+      console.error('Error  saving shipment:', error);
       alert('Failed to save shipment. Please try again.');
     }
   };
