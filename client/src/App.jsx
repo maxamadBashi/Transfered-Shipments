@@ -3,8 +3,7 @@ import axios from 'axios';
 import ShipmentForm from './components/ShipmentForm';
 import PrintLayout from './components/PrintLayout';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
+const API_URL = '/api';
 
 function App() {
   const [currentShipment, setCurrentShipment] = useState(null);
@@ -24,7 +23,7 @@ function App() {
         setIsPrinting(false);
       }, 500);
     } catch (error) {
-      console.error('Error  saving shipment:', error);
+      console.error('Error saving shipment:', error);
       alert('Failed to save shipment. Please try again.');
     }
   };

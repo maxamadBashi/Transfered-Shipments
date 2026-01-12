@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('./db');
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -7,25 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Helper to generate shipment ID: TS-YYYY-XXXX
-const generateShipmentId = async () => {
-    const year = new Date().getFullYear();
-    const res = await db.query(
-        "SELECT shipment_id FROM shipments WHERE shipment_id LIKE $1 ORDER BY shipment_id DESC LIMIT 1",
-        [`TS-${year}-%`]
-    );
-
-    if (res.rows.length === 0) {
-        return `TS-${year}-0001`;
-    }
-
-    const lastId = res.rows[0].shipment_id;
-    const lastNum = parseInt(lastId.split('-')[2]);
-    const newNum = (lastNum + 1).toString().padStart(4, '0');
-    return `TS-${year}-${newNum}`;
-};
-
-// POST /api/shipments - Save shipment
+// API Routes
 app.post('/api/shipments', async (req, res) => {
     try {
         const {
@@ -59,7 +42,6 @@ app.post('/api/shipments', async (req, res) => {
     }
 });
 
-// GET /api/shipments/:id - Get shipment by ID
 app.get('/api/shipments/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -76,7 +58,6 @@ app.get('/api/shipments/:id', async (req, res) => {
     }
 });
 
-// GET /api/shipments - List all shipments
 app.get('/api/shipments', async (req, res) => {
     try {
         const result = await db.query('SELECT * FROM shipments ORDER BY created_at DESC');
@@ -85,6 +66,33 @@ app.get('/api/shipments', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'Database error' });
     }
+});
+
+// Helper to generate shipment ID: TS-YYYY-XXXX
+const generateShipmentId = async () => {
+    const year = new Date().getFullYear();
+    const res = await db.query(
+        "SELECT shipment_id FROM shipments WHERE shipment_id LIKE $1 ORDER BY shipment_id DESC LIMIT 1",
+        [`TS-${year}-%`]
+    );
+
+    if (res.rows.length === 0) {
+        return `TS-${year}-0001`;
+    }
+
+    const lastId = res.rows[0].shipment_id;
+    const lastNum = parseInt(lastId.split('-')[2]);
+    const newNum = (lastNum + 1).toString().padStart(4, '0');
+    return `TS-${year}-${newNum}`;
+};
+
+// Serve static assets in production
+const distPath = path.join(__dirname, '../client/dist');
+app.use(express.static(distPath));
+
+// Catch-all route to serve index.html for React SPA
+app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
