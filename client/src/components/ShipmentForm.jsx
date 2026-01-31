@@ -54,7 +54,7 @@ const ShipmentForm = ({ onSave }) => {
                                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 block">Cnor Name</label>
                                 <div className="relative">
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                    <input required name="sender_name" value={formData.sender_name} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" placeholder="John Doe" />
+                                    <input required name="sender_name" value={formData.sender_name} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" placeholder="Name" />
                                 </div>
                             </div>
                             <div>
@@ -99,7 +99,7 @@ const ShipmentForm = ({ onSave }) => {
                                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 block">Cnee Name</label>
                                 <div className="relative">
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                    <input required name="receiver_name" value={formData.receiver_name} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none" placeholder="Jane Smith" />
+                                    <input required name="receiver_name" value={formData.receiver_name} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none" placeholder="Name" />
                                 </div>
                             </div>
                             <div>
