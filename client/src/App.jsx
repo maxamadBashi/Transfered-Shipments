@@ -9,6 +9,8 @@ if (!apiUrl.endsWith('/api')) {
   apiUrl = apiUrl.replace(/\/$/, '') + '/api';
 }
 const API_URL = apiUrl;
+console.log('Current VITE_API_URL:', import.meta.env.VITE_API_URL);
+console.log('Resolved API_URL:', API_URL);
 
 function App() {
   const [currentShipment, setCurrentShipment] = useState(null);
