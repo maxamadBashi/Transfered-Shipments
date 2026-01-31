@@ -61,7 +61,7 @@ const ShipmentForm = ({ onSave }) => {
                                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 block">Address</label>
                                 <div className="relative">
                                     <MapPin className="absolute left-3 top-3 text-gray-400" size={18} />
-                                    <textarea required name="sender_address" value={formData.sender_address} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" rows="2" placeholder="123 Sender St,  City"></textarea>
+                                    <textarea required name="sender_address" value={formData.sender_address} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none" rows="2" placeholder="Enter Address"></textarea>
                                 </div>
                             </div>
                             <div>
@@ -106,7 +106,7 @@ const ShipmentForm = ({ onSave }) => {
                                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 block">Address</label>
                                 <div className="relative">
                                     <MapPin className="absolute left-3 top-3 text-gray-400" size={18} />
-                                    <textarea required name="receiver_address" value={formData.receiver_address} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none" rows="2" placeholder="456 Receiver Ave, City"></textarea>
+                                    <textarea required name="receiver_address" value={formData.receiver_address} onChange={handleChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all outline-none" rows="2" placeholder="Enter Address"></textarea>
                                 </div>
                             </div>
                             <div>
