@@ -7,6 +7,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Debug middleware
+app.use((req, res, next) => {
+    console.log(`[DEBUG] ${req.method} ${req.path}`);
+    next();
+});
+
+
 // Helper to generate shipment ID: TS-YYYY-XXXX
 const generateShipmentId = async () => {
     const year = new Date().getFullYear();
@@ -88,9 +95,9 @@ app.get('/api/shipments', async (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404).send('What you are looking for does not exist!');
+    res.status(404).send('Custom 404: What you are looking for does not exist!');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT} (Debug Mode)`);
 });
