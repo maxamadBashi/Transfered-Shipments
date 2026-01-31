@@ -3,7 +3,7 @@ import axios from 'axios';
 import ShipmentForm from './components/ShipmentForm';
 import PrintLayout from './components/PrintLayout';
 
-const API_URL = '/api';
+const API_URL = 'http://localhost:5000/api';
 
 function App() {
   const [currentShipment, setCurrentShipment] = useState(null);
