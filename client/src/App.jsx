@@ -3,7 +3,12 @@ import axios from 'axios';
 import ShipmentForm from './components/ShipmentForm';
 import PrintLayout from './components/PrintLayout';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Construct API URL: ensure it always ends with /api to avoid 404s
+let apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+if (!apiUrl.endsWith('/api')) {
+  apiUrl = apiUrl.replace(/\/$/, '') + '/api';
+}
+const API_URL = apiUrl;
 
 function App() {
   const [currentShipment, setCurrentShipment] = useState(null);
