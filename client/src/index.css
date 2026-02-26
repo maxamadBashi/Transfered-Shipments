@@ -14,15 +14,30 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .a4-print-container {
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  .a4-print-container > div {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
   }
 
   .page-break {
     page-break-after: always;
-  }
-
-  @page {
-    margin: 0;
   }
 }
 
